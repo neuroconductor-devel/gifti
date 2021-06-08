@@ -180,7 +180,14 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-
+      - name: Run the action
+        uses: PennSIVE/r2py@0.2.0
+        with:
+          username: ${{ github.actor }}
+          repo: ${{ github.event.repository.name }} 
+          email: "tim.terf@gmail.com"
+          pat: ${{ secrets.GH_PAT }}
+      
       - name: Before Deploy
         run: Rscript -e "tic::before_deploy()"
 
