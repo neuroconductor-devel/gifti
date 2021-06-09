@@ -182,7 +182,7 @@ jobs:
           path: check
 
       - name: Run the action
-        uses: adigherman/r2py@0.2.5
+        uses: adigherman/r2py@0.2.6
         with:
           repo-name: ${{ steps.get-name.outputs.repo_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
