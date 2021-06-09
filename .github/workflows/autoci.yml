@@ -186,6 +186,7 @@ jobs:
         with:
           repo-name: ${{ steps.get-name.outputs.repo_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-to: "adigherman"
       
       - name: Before Deploy
         run: Rscript -e "tic::before_deploy()"
