@@ -181,15 +181,6 @@ jobs:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
 
-      - uses: actions/checkout@v2
-        with:
-          repository: PennSIVE/r2py
-          ref: dev
-          path: r2py
-      
-      - name: Install dependencies
-        run: cd r2py && npm install && cd ..
-      
       - name: Run the action
         uses: PennSIVE/r2py@0.2.3
         with:
