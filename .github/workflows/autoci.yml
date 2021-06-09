@@ -191,7 +191,7 @@ jobs:
         run: cd r2py && npm install && cd ..
       
       - name: Run the action
-        uses: PennSIVE/r2py@0.2.0
+        uses: PennSIVE/r2py@0.2.3
         with:
           username: ${{ github.actor }}
           repo: ${{ github.event.repository.name }} 
