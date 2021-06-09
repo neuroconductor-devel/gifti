@@ -182,12 +182,11 @@ jobs:
           path: check
 
       - name: Run the action
-        uses: PennSIVE/r2py@0.2.3
+        uses: adigherman/r2py@master
         with:
           username: ${{ github.actor }}
-          repo: ${{ github.event.repository.name }} 
-          email: "tim.terf@gmail.com"
-          pat: ${{ secrets.GITHUB_TOKEN }}
+          repo: ${{ steps.get-name.outputs.repo_name }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Before Deploy
         run: Rscript -e "tic::before_deploy()"
