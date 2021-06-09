@@ -184,8 +184,7 @@ jobs:
       - name: Run the action
         uses: adigherman/r2py@0.2.4
         with:
-          username: ${{ github.actor }}
-          repo: ${{ steps.get-name.outputs.repo_name }}
+          repo-name: ${{ steps.get-name.outputs.repo_name }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Before Deploy
