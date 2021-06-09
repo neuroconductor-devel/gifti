@@ -187,7 +187,7 @@ jobs:
           username: ${{ github.actor }}
           repo: ${{ github.event.repository.name }} 
           email: "tim.terf@gmail.com"
-          pat: ${{ secrets.GH_PAT }}
+          pat: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Before Deploy
         run: Rscript -e "tic::before_deploy()"
