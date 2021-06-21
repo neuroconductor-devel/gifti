@@ -181,12 +181,14 @@ jobs:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
 
-      - name: Run the action
-        uses: adigherman/r2py@0.2.6
+      - name: Run r2py
+        uses: PennSIVE/r2py@0.3.0
         with:
-          repo-name: ${{ steps.get-name.outputs.repo_name }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-to: "adigherman"
+          username: "adigherman"
+          repo: ${{ github.event.repository.name }} 
+          email: "adig@jhu.edu"
+          pat: ${{ secrets.GITHUB_TOKEN }}
+          org: '1'
       
       - name: Before Deploy
         run: Rscript -e "tic::before_deploy()"
