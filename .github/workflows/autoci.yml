@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Get tag name
         id: get_tag_name
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+	run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: Attempt to Delete Release
         uses: adigherman/actions/delete-release-by-tag@master
         id: delete-release
@@ -66,11 +66,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
 
-      - uses: r-lib/actions/setup-tinytex@master
+      - uses: r-lib/actions/setup-tinytex@v2
         if: matrix.config.latex == 'true'
 
       - name: Install additional latex modules
@@ -80,7 +80,7 @@ jobs:
           tlmgr install filecontents upquote courier courier-scaled biber biblatex collection-luatex ae thumbpdf grfext
           tlmgr update --all
 
-      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-pandoc@v2
 
       - name: Setup git identity
         run: |
