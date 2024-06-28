@@ -31,7 +31,7 @@ jobs:
  #        tag_name: ${{ steps.get_tag_name.outputs.VERSION }}
           tag_name: ${{ github.ref }}
  #        release_name: Neuroc Release ${{ steps.get_tag_name.outputs.VERSION }}
-          release_name: Neuroc Release ${{ github.refN }}
+          release_name: Neuroc Release ${{ github.ref }}
           draft: false
           prerelease: false
 
