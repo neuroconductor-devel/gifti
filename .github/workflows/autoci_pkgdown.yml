@@ -24,6 +24,7 @@ jobs:
         run: |
           install.packages("pak")
           pak::pkg_install("pkgdown", dependencies = TRUE)
+	  pak::pkg_install("R.Utils")
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
