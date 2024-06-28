@@ -45,8 +45,8 @@ jobs:
           - {os: macOS-latest,   r: 'release', r_ver: '4.4.0', latex: "true", vdiffr: false}
           - {os: windows-latest, r: 'oldrel',  r_ver: '4.3.3'}
           - {os: windows-latest, r: 'release', r_ver: '4.4.0'}
-          - {os: ubuntu-22.04,   r: 'oldrel',  r_ver: '4.3.3', latex: "true", rspm: "https://packagemanager.rstudio.com/cran/latest/src/contrib/PACKAGES"}
-          - {os: ubuntu-22.04,   r: 'release', r_ver: '4.4.0', latex: "true", rspm: "https://packagemanager.rstudio.com/cran/latest/src/contrib/PACKAGES", coveralls: "true"}
+          - {os: ubuntu-22.04,   r: 'oldrel',  r_ver: '4.3.3', latex: "true", rspm: "https://packagemanager.rstudio.com/cran/latest"}
+          - {os: ubuntu-22.04,   r: 'release', r_ver: '4.4.0', latex: "true", rspm: "https://packagemanager.rstudio.com/cran/latest", coveralls: "true"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
