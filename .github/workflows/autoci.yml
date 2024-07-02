@@ -4,7 +4,7 @@ on:
        - '*.[sc]'
   workflow_dispatch:
 
-name: Check
+name: Checks
 jobs:
   create_release:
     name: Create release
