@@ -45,9 +45,9 @@ jobs:
       matrix:
         config:
 #          - {os: macOS-latest,   r: 'oldrel',  r_ver: '4.3.3', latex: "true", vdiffr: false}
-          - {os: macOS-latest,   r: 'release', r_ver: '4.4.0', latex: "true", vdiffr: false}
+#          - {os: macOS-latest,   r: 'release', r_ver: '4.4.0', latex: "true", vdiffr: false}
 #          - {os: windows-latest, r: 'oldrel',  r_ver: '4.3.3'}
-          - {os: windows-latest, r: 'release', r_ver: '4.4.0'}
+#          - {os: windows-latest, r: 'release', r_ver: '4.4.0'}
 #          - {os: ubuntu-22.04,   r: 'oldrel',  r_ver: '4.3.3', latex: "true", rspm: "https://packagemanager.rstudio.com/cran/latest"}
           - {os: ubuntu-22.04,   r: 'release', r_ver: '4.4.0', latex: "true", rspm: "https://packagemanager.rstudio.com/cran/latest", coveralls: "true"}
 
@@ -138,22 +138,18 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install system dependencies
+      - name: Install R and sys dependencies
         if: runner.os == 'Linux'
         uses: r-lib/actions/setup-r-dependencies@v2
-#        env:
-#          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
-#        run: |
-#          Rscript -e "remotes::install_github('r-hub/sysreqs')"
-#          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
-#          sudo -s eval "$sysreqs"
+        with:
+          extra-packages: any::covr, any::xml2, any:rcmdcheck, any::markdown
+          needs: coverage
 
       - name: Install helper packages
         run: |
           remotes::install_github("ropensci/tic")
           remotes::install_github("adigherman/ghtravis")
           remotes::install_github("muschellij2/aghast")
-          remotes::install_cran("covr")
         shell: Rscript {0}
 
 #      - name: Install Binaries
@@ -162,8 +158,6 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-          remotes::install_cran("markdown")
         shell: Rscript {0}
 
       - name: Session info
