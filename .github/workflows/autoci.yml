@@ -142,7 +142,7 @@ jobs:
         if: runner.os == 'Linux'
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::covr, any::xml2, any:rcmdcheck, any::markdown
+          extra-packages: any::covr, any::xml2, any::markdown
           needs: coverage
 
       - name: Install helper packages
@@ -158,6 +158,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("markdown")
         shell: Rscript {0}
 
       - name: Session info
