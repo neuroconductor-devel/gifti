@@ -207,4 +207,4 @@ jobs:
 
       - name: Coveralls
         if: matrix.config.coveralls == 'true'
-        uses: coverallsapp/github-actions@v2
+        uses: coverallsapp/github-action@v2
