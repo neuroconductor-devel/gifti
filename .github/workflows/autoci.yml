@@ -54,7 +54,7 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       TIC_DEPLOY_KEY: ${{ secrets.TIC_DEPLOY_KEY }}
-      RSPM: ${{ matrix.config.rspm }}
+#      RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       continue-on-error: ${{ startsWith(matrix.config.r, 'devel') }}
