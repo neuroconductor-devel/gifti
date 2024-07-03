@@ -59,6 +59,7 @@ jobs:
       COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       continue-on-error: ${{ startsWith(matrix.config.r, 'devel') }}
       VDIFFR_RUN_TESTS: ${{ matrix.config.vdiffr }}
+      CI_BRANCH: "main"
 
     steps:
       - uses: actions/checkout@v2
