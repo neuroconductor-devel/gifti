@@ -206,7 +206,7 @@ jobs:
       - name: After Deploy
         run: Rscript -e "tic::after_deploy()"
 
-       - name: Enable Repo on Coveralls
+      - name: Enable Repo on Coveralls
         id: enable_coveralls
         run: |
           curl -s -H "Accept: application/json" \
