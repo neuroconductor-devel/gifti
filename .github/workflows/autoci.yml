@@ -188,7 +188,7 @@ jobs:
       - name: Before Deploy
         run: | 
           Rscript -e "tic::before_deploy()"
-          mv ${{ steps.get-release-asset.outputs.asset_path }} ${{ steps.get-release-asset.outputs.asset_rename }}
+          cp ${{ steps.get-release-asset.outputs.asset_path }} ${{ steps.get-release-asset.outputs.asset_rename }}
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
