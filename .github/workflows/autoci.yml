@@ -186,14 +186,16 @@ jobs:
           path: check
 
       - name: Before Deploy
-        run: Rscript -e "tic::before_deploy()"
+        run: | 
+          Rscript -e "tic::before_deploy()"
+          mv ${{ steps.get-release-asset.outputs.asset_path }} ${{ steps.get-release-asset.outputs.asset_rename }}
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-           files: ${{ steps.get-release-asset.outputs.asset_path }}
+           files: ${{ steps.get-release-asset.outputs.asset_rename }}
 
       - name: Deploy
         run: Rscript -e "tic::deploy()"
