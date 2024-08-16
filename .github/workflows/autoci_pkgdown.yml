@@ -24,10 +24,11 @@ jobs:
         run: |
           install.packages("pak")
           pak::pkg_install("pkgdown", dependencies = TRUE)
+          pak::pkg_install("usethis", dependencies = TRUE)
           pak::pkg_install("R.utils")
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
       - name: Deploy package
-        run: use_github_action("pkgdown")
+        run: usethis::use_github_action("pkgdown")
         shell: Rscript {0}
