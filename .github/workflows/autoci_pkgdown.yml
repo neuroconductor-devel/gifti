@@ -24,10 +24,11 @@ jobs:
         run: |
           install.packages("pak")
           pak::pkg_install("pkgdown", dependencies = TRUE)
+          pak::local_install_dev_deps()
           pak::pkg_install("R.utils")
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
       - name: Deploy package
-        run: pkgdown::deploy_to_branch(new_process = FALSE)
+        run: pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE)
         shell: Rscript {0}
