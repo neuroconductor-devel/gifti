@@ -12,3 +12,4 @@ check_reader.R
 ^autoci\.yml$
 ^autoci_pkgdown\.yml$
 ^tic\.R$
+^\./tic\.R\.bak$
